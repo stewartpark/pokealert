@@ -8,7 +8,7 @@ Know when pokemon are around on Slack! PokeAlert posts a message on Slack when p
 
 ## How it works
 
-There's a well-known definitely-most-awesome magical website called Pokevision, which did an awesome job on pulling data of the locations of pokemon. PokeAlert uses the API of theirs. (Unofficial, but their API was nice and easy enough to use... Contact me if you don't want this, Pokevision guys)
+There's a well-known definitely-most-awesome magical website called Pokevision, which did an awesome job on pulling data of the locations of pokemon. PokeAlert uses the API of theirs. Think of this as a Pokevision integration. (Unofficial, but their API was nice and easy enough to use... Contact me if you don't want this, Pokevision guys)
 
 
 ## Contributing

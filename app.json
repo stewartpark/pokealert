@@ -19,6 +19,10 @@
     "RANGE": {
       "description": "The range of search (Default: 0.002, about one block)",
       "value": "0.002"
+    },
+    "PULL_WAIT": {
+      "description": "Minutes to wait until next pulling",
+      "value": 1
     }
   },
   "formation": {

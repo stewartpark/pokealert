@@ -9,10 +9,12 @@ import (
 )
 
 type SlackAttachment struct {
-	Fallback string `json:"fallback"`
-	Color    string `json:"color"`
-	Text     string `json:"text"`
-	ThumbUrl string `json:"thumb_url"`
+	Fallback      string `json:"fallback"`
+	Text          string `json:"text"`
+	Color         string `json:"color"`
+	AuthorName    string `json:"author_name"`
+	AuthorLink    string `json:"author_link"`
+	AuthorIconUrl string `json:"author_icon"`
 }
 
 type SlackRequest struct {
@@ -50,20 +52,24 @@ func GetPokemonNameById(id int) string {
 	return pokemon_names[id]
 }
 
-func PostPokemonIds(webhook_url string, pokemonIds []int) bool {
+func PostPokemonIds(webhook_url string, pokemonIds []int, latitude, longitude float64) bool {
 	names := make([]string, len(pokemonIds))
 	for i, v := range pokemonIds {
 		names[i] = GetPokemonNameById(v)
 	}
 
-    msg := fmt.Sprintf("Pokemon have appeared nearby: %v", strings.Join(names, ", "))
-	req := SlackRequest{
+	pokenames := strings.Join(names, ", ")
+	msg       := "Pokemon have appeared nearby!"
+	link      := fmt.Sprintf("https://pokevision.com/#/@%v,%v", latitude, longitude)
+	req       := SlackRequest{
 		Attachments: []SlackAttachment{
 			SlackAttachment{
 				Fallback: msg,
-                Text: msg,
-                Color: "#FF0000",
-				ThumbUrl: fmt.Sprintf(
+				Text: msg,
+				Color: "#DCDCDC",
+				AuthorName: pokenames,
+				AuthorLink: link,
+				AuthorIconUrl: fmt.Sprintf(
 					"http://ugc.pokevision.com/images/pokemon/%d.png",
 					pokemonIds[0],
 				),
