@@ -1,0 +1,31 @@
+{
+  "name": "PokeAlert",
+  "description": "Know when pokemon are around on Slack!",
+  "keywords": [
+    "slack",
+    "pokemon"
+  ],
+  "repository": "https://github.com/stewartpark/pokealert",
+  "env": {
+    "SLACK_WEBHOOK_URL": {
+      "description": "A Slack incoming webhook URL"
+    },
+    "LATITUDE": {
+      "description": "The latitude of the location"
+    },
+    "LONGITUDE": {
+      "description": "The longitude of the location"
+    },
+    "RANGE": {
+      "description": "The range of search (Default: 0.002, about one block)",
+      "value": "0.002"
+    }
+  },
+  "formation": {
+    "app": {
+      "quantity": 1,
+      "size": "Free"
+    }
+  },
+  "image": "heroku/go"
+}
