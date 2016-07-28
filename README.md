@@ -1,5 +1,7 @@
 # PokeAlert
 
+![Screenshot](https://raw.githubusercontent.com/stewartpark/pokealert/master/misc/screenshot.png)
+
 Know when pokemon are around on Slack! PokeAlert posts a message on Slack when pokemon appear near you real-time! It **had to be** written in Go, because it's Pokemon **Go**. :joy:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
