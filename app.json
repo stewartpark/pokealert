@@ -22,7 +22,7 @@
     },
     "PULL_WAIT": {
       "description": "Minutes to wait until next pulling",
-      "value": 1
+      "value": "1"
     }
   },
   "formation": {
