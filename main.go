@@ -20,9 +20,9 @@ func main() {
 
 	for {
 		fmt.Printf("Loop running...\n")
-		pokemons := skiplagged.GetPokemonIdsWithRange(latitude, longitude, euc_range)
-		if len(pokemons) > 0 {
-			if slack.PostPokemonIds(webhook, pokemons, latitude, longitude) {
+		pokemon, times := skiplagged.GetPokemonIdsWithRange(latitude, longitude, euc_range)
+		if len(pokemon) > 0 {
+			if slack.PostPokemonIds(webhook, pokemon, times, latitude, longitude) {
 				fmt.Printf("Posted to Slack!\n")
 			}
 		} else {

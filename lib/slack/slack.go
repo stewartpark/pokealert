@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+	"time"
 )
 
 type SlackAttachment struct {
@@ -51,15 +52,15 @@ func GetPokemonNameById(id int) string {
 	return pokemon_names[id]
 }
 
-func PostPokemonIds(webhook_url string, pokemonIds []int, latitude, longitude float64) bool {
+func PostPokemonIds(webhook_url string, pokemonIds []int, expirationTimes []time.Time, latitude, longitude float64) bool {
 	names := make([]string, len(pokemonIds))
 	for i, v := range pokemonIds {
-		names[i] = GetPokemonNameById(v)
+		names[i] = fmt.Sprintf("%v (:timer_clock: %v)", GetPokemonNameById(v), expirationTimes[i].Format("03:04PM"))
 	}
 
 	pokenames := strings.Join(names, ", ")
 	msg := "Pokemon have appeared nearby!"
-	//link      := fmt.Sprintf("https://pokevision.com/#/@%v,%v", latitude, longitude)
+	//link := fmt.Sprintf("https://pokevision.com/#/@%v,%v", latitude, longitude)
 	link := fmt.Sprintf("https://skiplagged.com/catch-that/#%v,%v,18", latitude, longitude)
 	req := SlackRequest{
 		Attachments: []SlackAttachment{
