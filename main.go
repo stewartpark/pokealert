@@ -7,7 +7,7 @@ import (
 	"strconv"
 
 	"github.com/stewartpark/pokealert/lib/slack"
-	"github.com/stewartpark/pokealert/lib/pokevision"
+	"github.com/stewartpark/pokealert/lib/skiplagged"
 )
 
 
@@ -21,7 +21,7 @@ func main() {
 
 	for {
 		fmt.Printf("Loop running...\n")
-		pokemons := pokevision.GetPokemonIdsWithRange(latitude, longitude, euc_range)
+		pokemons := skiplagged.GetPokemonIdsWithRange(latitude, longitude, euc_range)
 		if len(pokemons) > 0 {
 			if slack.PostPokemonIds(webhook, pokemons, latitude, longitude) {
 				fmt.Printf("Posted to Slack!\n")
