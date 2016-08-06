@@ -60,7 +60,8 @@ func PostPokemonIds(webhook_url string, pokemonIds []int, latitude, longitude fl
 
 	pokenames := strings.Join(names, ", ")
 	msg       := "Pokemon have appeared nearby!"
-	link      := fmt.Sprintf("https://pokevision.com/#/@%v,%v", latitude, longitude)
+	//link      := fmt.Sprintf("https://pokevision.com/#/@%v,%v", latitude, longitude)
+	link      := fmt.Sprintf("https://skiplagged.com/catch-that/#%v,%v,18", latitude, longitude)
 	req       := SlackRequest{
 		Attachments: []SlackAttachment{
 			SlackAttachment{
