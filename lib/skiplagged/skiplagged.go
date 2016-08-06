@@ -52,7 +52,17 @@ func GetPokemonIdsWithRange(latitude, longitude, radius float64) []int {
 
 	result := []int{}
 	for _, pokemon := range poke_resp.Pokemon {
-		result = append(result, pokemon.PokemonId)
+        poke_UID := fmt.Sprintf(
+            "%v:%v:%v:%v",
+            pokemon.PokemonId,
+            pokemon.ExpirationTime,
+            pokemon.Latitude,
+            pokemon.Longitude,
+        )
+        if !seen_pokemon[poke_UID] {
+            seen_pokemon[poke_UID] = true
+		    result = append(result, pokemon.PokemonId)
+        }
 	}
 
 	return result
