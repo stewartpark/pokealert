@@ -26,7 +26,7 @@ func GetPokemonIdsWithRange(latitude, longitude, radius float64) []int {
 	resp, err := http.Get(
 		fmt.Sprintf(
 			"https://skiplagged.com/api/pokemon.php?bounds=%v,%v,%v,%v",
-			latitude-(radius/2.0), // Not sure it's the correct scale
+			latitude-(radius/2.0),
 			longitude-(radius/2.0),
 			latitude+(radius/2.0),
 			longitude+(radius/2.0),
