@@ -2,6 +2,8 @@
 
 ![Screenshot](https://raw.githubusercontent.com/stewartpark/pokealert/master/misc/screenshot.png)
 
+UPDATE: Changed our source of pulling from Pokevision to Skiplagged. This bot still works!
+
 Know when pokemon are around on Slack! PokeAlert posts a message on Slack when pokemon appear near you real-time! It **had to be** written in Go, because it's Pokemon **Go**. :joy:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
