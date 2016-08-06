@@ -1,11 +1,11 @@
 package pokevision
 
 import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
 	"math"
 	"net/http"
-	"fmt"
-	"encoding/json"
-	"io/ioutil"
 )
 
 type PokevisionPokemon struct {
@@ -20,8 +20,8 @@ type PokevisionPokemon struct {
 }
 
 type PokevisionResponse struct {
-	Status  string               `json:"status"`
-	Pokemon []PokevisionPokemon  `json:"pokemon"`
+	Status  string              `json:"status"`
+	Pokemon []PokevisionPokemon `json:"pokemon"`
 }
 
 var seen_pokemon = make(map[string]bool)
@@ -51,7 +51,7 @@ func GetPokemonIdsWithRange(latitude, longitude, radius float64) []int {
 	result := []int{}
 	for _, pokemon := range poke_resp.Pokemon {
 		if pokemon.IsAlive && !seen_pokemon[pokemon.UID] &&
-			math.Sqrt(math.Pow(pokemon.Latitude - latitude, 2) + math.Pow(pokemon.Longitude - longitude, 2)) <= radius {
+			math.Sqrt(math.Pow(pokemon.Latitude-latitude, 2)+math.Pow(pokemon.Longitude-longitude, 2)) <= radius {
 			seen_pokemon[pokemon.UID] = true
 			result = append(result, pokemon.PokemonId)
 		}

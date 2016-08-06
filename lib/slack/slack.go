@@ -1,11 +1,11 @@
 package slack
 
 import (
-	"net/http"
-	"fmt"
-	"strings"
 	"bytes"
 	"encoding/json"
+	"fmt"
+	"net/http"
+	"strings"
 )
 
 type SlackAttachment struct {
@@ -20,7 +20,6 @@ type SlackAttachment struct {
 type SlackRequest struct {
 	Attachments []SlackAttachment `json:"attachments"`
 }
-
 
 func GetPokemonNameById(id int) string {
 	pokemon_names := []string{
@@ -59,15 +58,15 @@ func PostPokemonIds(webhook_url string, pokemonIds []int, latitude, longitude fl
 	}
 
 	pokenames := strings.Join(names, ", ")
-	msg       := "Pokemon have appeared nearby!"
+	msg := "Pokemon have appeared nearby!"
 	//link      := fmt.Sprintf("https://pokevision.com/#/@%v,%v", latitude, longitude)
-	link      := fmt.Sprintf("https://skiplagged.com/catch-that/#%v,%v,18", latitude, longitude)
-	req       := SlackRequest{
+	link := fmt.Sprintf("https://skiplagged.com/catch-that/#%v,%v,18", latitude, longitude)
+	req := SlackRequest{
 		Attachments: []SlackAttachment{
 			SlackAttachment{
-				Fallback: msg,
-				Text: msg,
-				Color: "#DCDCDC",
+				Fallback:   msg,
+				Text:       msg,
+				Color:      "#DCDCDC",
 				AuthorName: pokenames,
 				AuthorLink: link,
 				AuthorIconUrl: fmt.Sprintf(
@@ -83,7 +82,7 @@ func PostPokemonIds(webhook_url string, pokemonIds []int, latitude, longitude fl
 	http_req, _ := http.NewRequest(
 		"POST",
 		webhook_url,
-		bytes.NewBuffer([]byte("payload=" + string(buf))),
+		bytes.NewBuffer([]byte("payload="+string(buf))),
 	)
 	http_req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 

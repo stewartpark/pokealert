@@ -1,10 +1,10 @@
 package skiplagged
 
 import (
-	"net/http"
-	"fmt"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
+	"net/http"
 )
 
 type SkiplaggedPokemon struct {
@@ -16,8 +16,8 @@ type SkiplaggedPokemon struct {
 }
 
 type SkiplaggedResponse struct {
-	Status  string               `json:"status"`
-	Pokemon []SkiplaggedPokemon  `json:"pokemons"`
+	Status  string              `json:"status"`
+	Pokemon []SkiplaggedPokemon `json:"pokemons"`
 }
 
 var seen_pokemon = make(map[string]bool)
@@ -25,12 +25,12 @@ var seen_pokemon = make(map[string]bool)
 func GetPokemonIdsWithRange(latitude, longitude, radius float64) []int {
 	resp, err := http.Get(
 		fmt.Sprintf(
-            "https://skiplagged.com/api/pokemon.php?bounds=%v,%v,%v,%v",
-            latitude - (radius / 2.0),  // Not sure it's the correct scale
-            longitude - (radius / 2.0),
-            latitude + (radius / 2.0),
-            longitude + (radius / 2.0),
-        ),
+			"https://skiplagged.com/api/pokemon.php?bounds=%v,%v,%v,%v",
+			latitude-(radius/2.0), // Not sure it's the correct scale
+			longitude-(radius/2.0),
+			latitude+(radius/2.0),
+			longitude+(radius/2.0),
+		),
 	)
 	if err != nil {
 		fmt.Printf("Error raised while sending a HTTP request: %v", err)
@@ -52,7 +52,7 @@ func GetPokemonIdsWithRange(latitude, longitude, radius float64) []int {
 
 	result := []int{}
 	for _, pokemon := range poke_resp.Pokemon {
-        result = append(result, pokemon.PokemonId)
+		result = append(result, pokemon.PokemonId)
 	}
 
 	return result
